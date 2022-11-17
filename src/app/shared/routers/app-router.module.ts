@@ -12,6 +12,10 @@ const routes:Routes =[
     pathMatch:'full',
   },
   {
+    path: 'personal',
+    component: MainPersonalComponent,
+  },
+  {
     path:'auth',
     component: SigninComponent,
 

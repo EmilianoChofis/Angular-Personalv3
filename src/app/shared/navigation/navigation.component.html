@@ -4,14 +4,14 @@
                  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                  [mode]="(isHandset$ | async) ? 'over' : 'side'"
                  [opened]="(isHandset$ | async) === false">
-      <mat-toolbar>Menu</mat-toolbar>
+      <mat-toolbar><img [src]="logoPath" alt="logoss" style="width: 35%; height=auto; display: inline"></mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item href="#">Link 1</a>
-        <a mat-list-item href="#">Link 2</a>
-        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item routerLink="personal">Personal</a>
+        <a mat-list-item routerLink="position">Position</a>
+        <a mat-list-item routerLink="users">Users</a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="row">
       <mat-toolbar color="primary">
         <button
           type="button"
@@ -21,7 +21,18 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>personal-ui</span>
+          <div class="col">
+            Personal app Front-end
+          </div>
+            <div class="col text-end">
+              <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item><mat-icon>person</mat-icon>Perfil</button>
+                <button mat-menu-item><mat-icon>logout</mat-icon>Logout</button>
+              </mat-menu>
+
+            </div>
       </mat-toolbar>
       <div class="container-fluid border">
         <div class="row">
@@ -32,4 +43,8 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>
+<div *ngIf="!session.logged">
+  <app-signin></app-signin>
+
 </div>

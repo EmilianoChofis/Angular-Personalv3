@@ -13,6 +13,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
+import {HttpClientModule} from "@angular/common/http";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {MatIconModule} from "@angular/material/icon";
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
     AuthModule,
     PersonalModule,
 
@@ -32,6 +35,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatToolbarModule,
     MatListModule,
     MatIconModule,
+    MatMenuModule,
     //así importamos todo en una sola linea
   ],
   providers: [],
