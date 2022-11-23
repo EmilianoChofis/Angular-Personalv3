@@ -22,12 +22,10 @@ export class AuthService {
     this.http.post<any>(`http://localhost:3000/api/auth/`,payload,{
       headers: {'Content-Type':'application/json'},
     })
-      .pipe(
-        catchError((error)=>{
+      .pipe(catchError((error)=>{
           this.loading=false;
           return error;
-        })
-      )
+        }))
       .subscribe((response)=>{
         localStorage.setItem('token', response.token);
         this.loading = false;

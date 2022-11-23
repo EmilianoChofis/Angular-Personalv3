@@ -13,8 +13,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatMenuModule} from "@angular/material/menu";
+import {CustomHttpInterceptorService} from "./services/http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -29,16 +30,20 @@ import {MatMenuModule} from "@angular/material/menu";
     HttpClientModule,
     AuthModule,
     PersonalModule,
-
+//así importamos todo en una sola linea
     ...materialModules,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
     MatIconModule,
     MatMenuModule,
-    //así importamos todo en una sola linea
+
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomHttpInterceptorService,
+    multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

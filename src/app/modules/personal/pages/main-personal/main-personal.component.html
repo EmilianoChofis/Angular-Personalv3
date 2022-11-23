@@ -1,35 +1,55 @@
-<p>main-personal works!</p>
+<mat-card class="mt-5 mb-5">
+  <mat-card-header class="row">
+    <div class="col">
+      <mat-card-title>PErsonal</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </div>
+    <div class="col text-end">
+      <button mat-mini-fab color="accent" aria-label="Open register personal"
+      (click)="openDialog('0ms', '0ms')">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="col-12" mat-table [dataSource]="personal" matSort (matSortChange)="announceSortChance($event)">
+      <ng-container matColumnDef="#">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+        <th mat-cell *matCellDef="let element; let i=index">{{i+1}}</th>
+      </ng-container>
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <th mat-cell *matCellDef="let element">{{element.nombre}}</th>
+      </ng-container>
+      <ng-container matColumnDef="apellidoP">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido paterno</th>
+        <th mat-cell *matCellDef="let element">{{element.apellidoP}}</th>
+      </ng-container>
+      <ng-container matColumnDef="apellidoM">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido materno</th>
+        <th mat-cell *matCellDef="let element">{{element.apellidoM}}</th>
+      </ng-container>
+      <ng-container matColumnDef="fecNac">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de nacimiento</th>
+        <th mat-cell *matCellDef="let element">{{element.fecNac}}</th>
+      </ng-container>
+      <ng-container matColumnDef="sueldo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sueldo</th>
+        <th mat-cell *matCellDef="let element">{{element.sueldo}}</th>
+      </ng-container>
+      <ng-container matColumnDef="puesto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Puesto</th>
+        <th mat-cell *matCellDef="let element">{{element.puesto}}</th>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <th mat-cell *matCellDef="let element">Buttons</th>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of personal elements">
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>
