@@ -21,8 +21,7 @@ export class MainPersonalComponent implements OnInit {
   }
 
   get personal(){
-    return new MatTableDataSource<Personal>(this.personalService.Personal)
-    return this.personalService.Personal
+    return new MatTableDataSource<Personal>(this.personalService.Personal);
   }
 
   @ViewChild(MatPaginator) paginator!:MatPaginator
@@ -60,7 +59,7 @@ export class MainPersonalComponent implements OnInit {
     exitAnimationDuration,
     disableClose:true
     })
-    modalRef.afterClosed().subscribe(result:any=>{
+    modalRef.afterClosed().subscribe((result:any)=>{
       console.log("closed", result)
     })
   }
