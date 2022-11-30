@@ -25,7 +25,7 @@ export class PersonalService {
 
   findAll(){
     this.loading = true
-    this.http.get<any>(`${APP_URL}api/personal`)
+    return this.http.get<any>(`${APP_URL}api/personal/`)
       .pipe(catchError
         (err => {
           this.loading = false
@@ -37,6 +37,10 @@ export class PersonalService {
         this.loading = false
       }
     )
+  }
+  findAllPosition(){
+    this.loading = true
+    return this.http.get<any>(`${APP_URL}api/position/`)
   }
 
   constructor(private http: HttpClient) { }
